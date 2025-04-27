@@ -18,13 +18,12 @@
 
     <div v-if="products.length > 0" class="mt-8">
       <ul class="space-y-3">
-        <li
+        <ProductCard
           v-for="product in products"
           :key="product.id"
-          class="bg-gray-50 p-4 rounded-md shadow flex items-center justify-between hover:bg-gray-100 transition duration-150"
-        >
-          <span class="text-lg text-gray-800">{{ product.name }}</span>
-        </li>
+          :product="product"
+          @delete="deleteProduct"
+        />
       </ul>
     </div>
     <p v-else class="text-center text-gray-500 italic mt-6">No products available.</p>
@@ -33,9 +32,13 @@
 
 <script>
 import axios from 'axios'
+import ProductCard from '@/components/ProductCard.vue'
 
 export default {
   name: 'ProductsView',
+  components: {
+    ProductCard,
+  },
   data() {
     return {
       products: [],
@@ -63,6 +66,14 @@ export default {
         this.fetchProducts()
       } catch (error) {
         console.error('Error adding product:', error)
+      }
+    },
+    async deleteProduct(productId) {
+      try {
+        await axios.delete(`http://localhost:5144/api/Product/${productId}`)
+        this.fetchProducts()
+      } catch (error) {
+        console.error('Error deleting product:', error)
       }
     },
   },
