@@ -12,13 +12,22 @@ import { RouterView } from 'vue-router'
             <router-link to="/" class="text-xl font-bold">Product Manager</router-link>
           </div>
           <div class="flex items-center space-x-4">
-            <router-link to="/" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500">
+            <router-link
+              to="/"
+              class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500"
+            >
               Home
             </router-link>
-            <router-link to="/products" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500">
+            <router-link
+              to="/products"
+              class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500"
+            >
               Products
             </router-link>
-            <router-link to="/about" class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500">
+            <router-link
+              to="/about"
+              class="px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-500"
+            >
               About
             </router-link>
           </div>
